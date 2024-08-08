@@ -10,7 +10,8 @@
 	border-radius: 1rem;
 }
 
-.menuItem button {
+.menuItem > button,
+.addToCartButtonActive {
 	width: 50%;
 	height: 2.5rem;
 	border: 1px solid var(--color-Rose-400);
@@ -31,40 +32,75 @@
 	background: var(--color-Rose-50);
 }
 
-.menuItem button::before {	
+/* Clicked/"Active" add to cart buttons */
+.addToCartButtonActive {
+	display: flex;
+	justify-content: space-between;
+	padding: 0 1rem;
+	border: var(--color-Red);
+	background: var(--color-Red);
+}
+
+.addToCartButtonActive span {
+	color: var(--color-Rose-50);
+	font-size: 0.8em;
+}
+
+.addToCartIncrement,
+.addToCartDecrement {
+	width: 1.4rem;
+	height: 1.4rem;
+	font-size: 0.8em;
+	color: var(--color-Rose-50);
+	border: 1px solid var(--color-Rose-50);
+	border-radius: 50%;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.addToCartIncrement:hover,
+.addToCartDecrement:hover {
+	background: var(--color-Rose-50);
+	color: var(--color-Red);
+}
+
+.menuItem > button::before {	
 	content: url("../../assets/images/icon-add-to-cart.svg");	
 	transform: translateY(3px);
 }
 
-.menuItem button:hover {
-	background: var(--color-Rose-300);
-	border-color: var(--color-Rose-100);
+.menuItem > button:hover {
+	background: var(--color-Rose-50);
+	border-color: var(--color-Red);
+	color: var(--color-Red);
 }
 
 .menuItem button:active {
-	background: var(--color-Rose-400);
-	border-color: var(--color-Rose-100);
+	background-color: var(--color-Rose-300);
+	border-color: var(--color-Red);
+	color: var(--color-Rose-50);
 }
 
-
 /* Item category */
-.menuItem div:nth-of-type(1) {
+.itemCategory {
 	color: var(--color-Rose-400);
 	font-size: 0.8em;
 }
 
 /* Item name */
-.menuItem div:nth-of-type(2) {
+.itemName {
 	color: var(--color-Rose-900);	
 	font-weight: 600;
 }
 
 /* Item price */
-.menuItem div:nth-of-type(3) {
+.itemPrice {
 	color: var(--color-Red);	
 }
 
-.menuItem div:nth-of-type(3)::before {
+.itemPrice::before {
 	content: "$";
 }
 
@@ -77,7 +113,8 @@
 		flex-direction: column;	
 	}	
 
-	.menuItem button {
-		width: 70%;
+	.menuItem > button,
+	.addToCartButtonActive {
+		width: 65%;
 	}
 }
