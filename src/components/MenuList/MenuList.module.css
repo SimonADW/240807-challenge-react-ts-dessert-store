@@ -1,13 +1,6 @@
 
-.listWrapper {	
-	padding: 2rem;
-	margin: 0 auto;
 
-	display: flex;
-	flex-direction: column;	
-}
-
-.listWrapper h1 {
+.dessertHeader {
 	font-weight: 700;
 	margin-bottom: 1rem;
 	letter-spacing: .8px;

@@ -15,17 +15,15 @@ const MenuList = () => {
 	const { menuArray } = context
 
   return (
-	<>	
-		<section className={styles.listWrapper}>
-			<h1>Desserts</h1>
-			<div className={styles.menuList}>
-			{
-				menuArray.map((item, index)=> {	
-					return <MenuItem item={item} key={index} index={index} addToCartButtonActive={addToCartButtonActive} setAddToCartButtonActive={setAddToCartButtonActive} />
-				})
-			}	
-			</div>
-		</section>
+	<>			
+		<h1 className={styles.dessertHeader}>Desserts</h1>
+		<div className={styles.menuList}>
+		{
+			menuArray.map((item, index)=> {	
+				return <MenuItem item={item} key={index} index={index} addToCartButtonActive={addToCartButtonActive} setAddToCartButtonActive={setAddToCartButtonActive} />
+			})
+		}	
+		</div>
 	</>
   )
 }

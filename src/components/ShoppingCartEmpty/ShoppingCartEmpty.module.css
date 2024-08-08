@@ -1,0 +1,23 @@
+.cartEmpty {
+	display: flex;
+	flex-direction: column;	
+	align-items: center;
+
+	padding: 2rem;
+	color: var(--color-Red);
+	background: var(--color-Rose-50);
+	border-radius: 1rem;
+}
+
+.cartEmpty h1 {	
+	font-weight: 600;
+	align-self: start;
+}
+
+.cartEmpty img {
+	width: 12rem;
+}
+
+.cartEmpty p {
+	color: var(--color-Rose-500);
+}
