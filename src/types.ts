@@ -9,3 +9,5 @@ export type MenuItemType = {
 	category: string;
 	price: number;
   };
+
+export type CurrentDeviceType =	'thumbnail' | 'mobile' | 'tablet' | 'desktop';

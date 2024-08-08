@@ -4,7 +4,7 @@ import { MenuItem } from '../MenuItem/MenuItem';
 
 /** Renders list of MenuItems */
 
-const MenuList: React.FC = () => {
+const MenuList = () => {
 	const context = useContext(MenuContext);	
 	if(!context) {
 		throw new Error("Cannot use MenuArray outside context");

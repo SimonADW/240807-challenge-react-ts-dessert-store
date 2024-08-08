@@ -1,21 +1,62 @@
-import React from 'react'
-import { MenuItemType } from '../../types'
+import React, { useEffect, useState } from "react";
+import { MenuItemType, CurrentDeviceType } from "../../types";
 
 type menuItemProps = {
-  item: MenuItemType;
-}
+	item: MenuItemType;
+};
 
-/** Single Item in menu, props from map`ed array in MenuList */ 
+/** Single Item in menu, props from map`ed array in MenuList */
 
-export const MenuItem: React.FC<menuItemProps> = ({item}) => {  
-  
-  return (    
-	  <div>
-      <img src={`${item.image.mobile}`} alt={item.name} />
-      <button>Add to Cart</button>
-      <div>{item.category}</div>
-      <div>{item.name}</div>
-      <div>{item.price}</div>
-    </div>
-  )
-}
+export const MenuItem: React.FC<menuItemProps> = ({ item }) => {
+	const [imageSrc, setImageSrc] = useState<string>("");
+	const [currentDevice, setCurrentDevice] = useState<CurrentDeviceType>("mobile");
+
+  /** Update image path based on device (innerWidth) */
+	const updateDeviceType = () => {
+		if (innerWidth <= 480) {
+			setCurrentDevice("mobile");
+		} else if (innerWidth <= 768) {
+			setCurrentDevice("tablet");
+		} else {
+			setCurrentDevice("desktop");
+		}
+	};
+
+	useEffect(() => {
+		updateDeviceType();      
+
+		const handleResize = () => {
+			updateDeviceType();
+		};
+
+		window.addEventListener("resize", handleResize);
+
+		return () => {
+			window.removeEventListener("resize", handleResize);
+		};
+	}, []);
+
+	useEffect(() => {
+    const importImage = async ()=> {
+      try {
+        import(`${item.image[currentDevice]}`).then((image) => {
+          setImageSrc(image.default);
+        });    
+      } catch {
+        throw new Error("Unable to get image path");
+      }
+    }
+
+    importImage();
+  }, [currentDevice, item.image]);
+
+	return (
+		<div>
+			<img src={imageSrc} alt={item.name} />
+			<button>Add to Cart</button>
+			<div>{item.category}</div>
+			<div>{item.name}</div>
+			<div>{item.price}</div>
+		</div>
+	);
+};
