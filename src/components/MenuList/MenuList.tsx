@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { MenuContext } from '../DessertProvider/DessertProvider'
 import { MenuItem } from '../MenuItem/MenuItem';
+import styles from '../MenuList/MenuList.module.css';
 
 /** Renders list of MenuItems */
 
@@ -14,12 +15,13 @@ const MenuList = () => {
 
   return (
 	<>	
-		<p>Hello from List</p>
+		<div className={styles.menuList}>
 		{
 			menuArray.map((item, index)=> {	
 				return <MenuItem item={item} key={index} />
 			})
 		}	
+		</div>
 	</>
   )
 }

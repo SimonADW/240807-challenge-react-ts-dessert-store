@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { MenuItemType, CurrentDeviceType } from "../../types";
+import styles from "./MenuItem.module.css";
 
 type menuItemProps = {
 	item: MenuItemType;
@@ -51,12 +52,12 @@ export const MenuItem: React.FC<menuItemProps> = ({ item }) => {
   }, [currentDevice, item.image]);
 
 	return (
-		<div>
+		<div className={styles.menuItem}>
 			<img src={imageSrc} alt={item.name} />
 			<button>Add to Cart</button>
 			<div>{item.category}</div>
 			<div>{item.name}</div>
-			<div>{item.price}</div>
+			<div>{item.price.toFixed(2)}</div>
 		</div>
 	);
 };
