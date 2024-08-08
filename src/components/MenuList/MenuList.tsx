@@ -15,13 +15,16 @@ const MenuList = () => {
 
   return (
 	<>	
-		<div className={styles.menuList}>
-		{
-			menuArray.map((item, index)=> {	
-				return <MenuItem item={item} key={index} />
-			})
-		}	
-		</div>
+		<section className={styles.listWrapper}>
+			<h1>Desserts</h1>
+			<div className={styles.menuList}>
+			{
+				menuArray.map((item, index)=> {	
+					return <MenuItem item={item} key={index} />
+				})
+			}	
+			</div>
+		</section>
 	</>
   )
 }

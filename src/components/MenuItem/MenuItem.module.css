@@ -1,6 +1,6 @@
 .menuItem {	
-	width: 90%;
 	margin: 0 auto 2rem; 	
+	font-size: 1.3rem;
 
 	display: flex;
 	flex-direction: column;	
@@ -11,11 +11,13 @@
 }
 
 .menuItem button {
-	width: 12rem;
-	height: 3rem;
+	width: 50%;
+	height: 2.5rem;
 	border: 1px solid var(--color-Rose-400);
 	border-radius: 3rem;
+	font-size: 0.8em;
 	font-weight: 600;
+
 	
 	display: flex;
 	justify-content: center;
@@ -34,9 +36,13 @@
 	transform: translateY(3px);
 }
 
-.menuItem button:hover,
-.menuItem button:focus {
+.menuItem button:hover {
 	background: var(--color-Rose-300);
+	border-color: var(--color-Rose-100);
+}
+
+.menuItem button:active {
+	background: var(--color-Rose-400);
 	border-color: var(--color-Rose-100);
 }
 
@@ -44,20 +50,34 @@
 /* Item category */
 .menuItem div:nth-of-type(1) {
 	color: var(--color-Rose-400);
+	font-size: 0.8em;
 }
 
 /* Item name */
 .menuItem div:nth-of-type(2) {
-	color: var(--color-Rose-900);
-	font-size: 1.3rem;
+	color: var(--color-Rose-900);	
 	font-weight: 600;
 }
 
 /* Item price */
 .menuItem div:nth-of-type(3) {
-	color: var(--color-Red);
-	font-size: 1.3rem;	
+	color: var(--color-Red);	
 }
+
 .menuItem div:nth-of-type(3)::before {
 	content: "$";
+}
+
+@media screen and (min-width: 769px) {
+	.menuItem {	
+		width: 15rem;
+		font-size: 1rem;
+	
+		display: flex;
+		flex-direction: column;	
+	}	
+
+	.menuItem button {
+		width: 70%;
+	}
 }
