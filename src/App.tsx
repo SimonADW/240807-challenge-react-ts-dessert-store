@@ -11,12 +11,12 @@ function App() {
 		<>
 			<section className="listWrapper">
 				<MenuList />
-				{cartContent.length !== 0 ? (
+			</section>
+				{cartContent.length === 0 ? (
 					<ShoppingCart cartContent={cartContent} />
 				) : (
 					<ShoppingCartEmpty />
 				)}
-			</section>
 		</>
 	);
 }

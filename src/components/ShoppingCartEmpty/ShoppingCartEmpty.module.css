@@ -21,3 +21,12 @@
 .cartEmpty p {
 	color: var(--color-Rose-500);
 }
+
+@media screen and (min-width: 769px) {
+	.cartEmpty {
+		min-width: 20rem;
+		font-size: 0.7em;
+		height: fit-content;
+
+	}
+}

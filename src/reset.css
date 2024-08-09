@@ -40,6 +40,10 @@ button {						/* Added */
 	touch-action: manipulation;
 }
 
+ul {
+	list-style: none;
+}
+
 p, h1, h2, h3, h4, h5, h6 {
 overflow-wrap: break-word;
 font-weight: 400;
@@ -47,6 +51,6 @@ font-weight: 400;
 
 
 /* only needed if you use a JS framework */
-/* #root, #__next {        
+#root, #__next {        
 isolation: isolate;
-} */
+}

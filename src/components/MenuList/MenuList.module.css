@@ -1,4 +1,8 @@
-
+.menuList {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
 
 .dessertHeader {
 	font-weight: 700;
@@ -8,14 +12,10 @@
 
 
 @media screen and (min-width: 769px) {
-	.listWrapper {
-		max-width: 816px ;
-		margin: 0 auto;
-	}
 
 	.menuList {
 		display: flex;
 		flex-flow: row wrap;
-		gap: 1rem;		
+		gap: 2rem;		
 	}	
 }
