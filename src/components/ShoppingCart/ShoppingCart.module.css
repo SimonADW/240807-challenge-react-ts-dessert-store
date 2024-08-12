@@ -39,6 +39,10 @@
 	color: var(--color-Red);
 }
 
+.cartItemQty::after {
+	content: "x"
+}
+
 .cartItemAt,
 .cartItemPrice {
 	color: var(--color-Rose-400);

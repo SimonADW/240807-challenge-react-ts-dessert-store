@@ -1,17 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { MenuItemType, CurrentDeviceType } from "../../types";
+import { MenuItemProps, CurrentDeviceType } from "../../types";
 import styles from "./MenuItem.module.css";
 
-type menuItemProps = {
-	item: MenuItemType;
-	index: number;
-	addToCartButtonActive: number;
-	setAddToCartButtonActive: React.Dispatch<React.SetStateAction<number>>;
-};
 
 /** Single Item in menu, props from map`ed array in MenuList */
 
-export const MenuItem: React.FC<menuItemProps> = ({
+export const MenuItem: React.FC<MenuItemProps> = ({
 	item,
 	index,
 	addToCartButtonActive,
@@ -46,7 +40,7 @@ export const MenuItem: React.FC<menuItemProps> = ({
 		};
 	}, []);
 
-  /**  Import image based on device */
+	/**  Import image based on device */
 	useEffect(() => {
 		const importImage = async () => {
 			try {

@@ -10,4 +10,17 @@ export type MenuItemType = {
 	price: number;
   };
 
+export type MenuItemProps = {
+	item: MenuItemType;
+	index: number;
+	addToCartButtonActive: number;
+	setAddToCartButtonActive: React.Dispatch<React.SetStateAction<number>>;
+};
+
 export type CurrentDeviceType =	'thumbnail' | 'mobile' | 'tablet' | 'desktop';
+
+export type CartContentType = {	
+	menuItemNum: number;
+	qty: number;
+	
+}[] | undefined;

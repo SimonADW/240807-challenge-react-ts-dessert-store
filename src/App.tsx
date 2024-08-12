@@ -4,9 +4,10 @@ import MenuList from "./components/MenuList/MenuList";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import ShoppingCartEmpty from "./components/ShoppingCartEmpty/ShoppingCartEmpty";
 import ConfirmOrderModal from "./components/ConfirmOrderModal/ConfirmOrderModal";
+import { CartContentType } from "./types";
 
 function App() {
-	const [cartContent, setCartContent] = useState([]);
+	const [cartContent, setCartContent] = useState<CartContentType>([{menuItemNum: 2, qty: 2}]);
 
 	return (
 		<>
@@ -14,8 +15,8 @@ function App() {
 				<MenuList />
 			</section>
 
-			{cartContent.length === 1 ? (
-				<ShoppingCart cartContent={cartContent} />
+			{cartContent ? (
+				<ShoppingCart cartContent={cartContent} setCartContent={setCartContent}  />
 			) : (
 				<ShoppingCartEmpty />
 			)}
