@@ -7,7 +7,9 @@ import ConfirmOrderModal from "./components/ConfirmOrderModal/ConfirmOrderModal"
 import { CartContentType } from "./types";
 
 function App() {
-	const [cartContent, setCartContent] = useState<CartContentType>([{menuItemNum: 2, qty: 2}]);
+	const [cartContent, setCartContent] = useState<CartContentType>([{menuItemNum: 2, qty: 2}, {menuItemNum: 3, qty: 2}]);
+	const [confirmOrderModalOpen, setConfirmModalOpen] = useState(true)
+
 
 	return (
 		<>
@@ -15,13 +17,16 @@ function App() {
 				<MenuList />
 			</section>
 
-			{cartContent ? (
-				<ShoppingCart cartContent={cartContent} setCartContent={setCartContent}  />
+			{cartContent[0].menuItemNum === 0 ? (
+			<ShoppingCartEmpty />
 			) : (
-				<ShoppingCartEmpty />
+			<ShoppingCart cartContent={cartContent} setCartContent={setCartContent}  />
 			)}
 
-			<ConfirmOrderModal />
+			{confirmOrderModalOpen
+			&&
+			<ConfirmOrderModal setCartContent={setCartContent} setConfirmModalOpen={setConfirmModalOpen}/>			
+			}
 			
 		</>
 	);

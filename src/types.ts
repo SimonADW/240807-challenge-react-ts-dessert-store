@@ -1,3 +1,5 @@
+import React from "react";
+
 export type MenuItemType = {
 	image: {
 	  thumbnail: string;
@@ -21,6 +23,9 @@ export type CurrentDeviceType =	'thumbnail' | 'mobile' | 'tablet' | 'desktop';
 
 export type CartContentType = {	
 	menuItemNum: number;
-	qty: number;
-	
-}[] | undefined;
+	qty: number;	
+}[];
+
+
+export type SetCartContentType = React.Dispatch<React.SetStateAction<CartContentType>>
+export type SetConfirmModalOpenType = React.Dispatch<React.SetStateAction<boolean>>
