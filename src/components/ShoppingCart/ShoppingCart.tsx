@@ -26,7 +26,7 @@ const ShoppingCart: React.FC<{
 				(index) => Number(index) === cartItem.menuItemNum
 			);
 			return menuItem ? sum + cartItem.qty * menuItem.price : sum;
-		}, 0);
+		}, orderSumTotal);
 
 		setOrderSumTotal(newOrderSumTotal);
 	}, [cartContent, menuArray]);

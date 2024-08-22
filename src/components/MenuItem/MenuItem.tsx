@@ -10,6 +10,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
 	index,
 	addToCartButtonActive,
 	setAddToCartButtonActive,
+	setCartContent
 }) => {
 	const [imageSrc, setImageSrc] = useState<string>("");
 	const [currentDevice, setCurrentDevice] =
@@ -55,6 +56,33 @@ export const MenuItem: React.FC<MenuItemProps> = ({
 		importImage();
 	}, [currentDevice, item.image]);
 
+	const addItemToCart = () => { 
+		setCartContent((prev) => {
+			const updatedCart = [...prev];
+			const itemIndex = updatedCart.findIndex((cartItem) => cartItem.menuItemNum === index);
+			if (itemIndex === -1) {
+				updatedCart.push({ menuItemNum: index, qty: 1 });
+			} else {
+				updatedCart[itemIndex].qty += 1;
+			}
+			return updatedCart;
+		});
+	}
+
+	const subtractItemFromCart = () => {
+		setCartContent((prev) => {
+			const updatedCart = [...prev];
+			const itemIndex = updatedCart.findIndex((cartItem) => cartItem.menuItemNum === index);
+			if (itemIndex !== -1) {
+				updatedCart[itemIndex].qty -= 1;
+				if (updatedCart[itemIndex].qty === 0) {
+					updatedCart.splice(itemIndex, 1);
+				}
+			}
+			return updatedCart;
+		});
+	}
+
 	return (
 		<div className={styles.menuItem}>
 			<img src={imageSrc} alt={item.name} />
@@ -62,9 +90,9 @@ export const MenuItem: React.FC<MenuItemProps> = ({
 				// Render select amount buttons when add to cart clicked
 				addToCartButtonActive === index ? (
 					<div className={styles.addToCartButtonActive}>
-						<button className={styles.addToCartDecrement}>-</button>
+						<button onClick={subtractItemFromCart} className={styles.addToCartDecrement}>-</button>
 						<span>1</span>
-						<button className={styles.addToCartIncrement}>+</button>
+						<button onClick={addItemToCart} className={styles.addToCartIncrement}>+</button>
 					</div>
 				) : (
 					<button onClick={() => setAddToCartButtonActive(index)}>

@@ -17,13 +17,14 @@ export type MenuItemProps = {
 	index: number;
 	addToCartButtonActive: number;
 	setAddToCartButtonActive: React.Dispatch<React.SetStateAction<number>>;
+	setCartContent: SetCartContentType;
 };
 
 export type CurrentDeviceType =	'thumbnail' | 'mobile' | 'tablet' | 'desktop';
 
 export type CartContentType = {	
 	menuItemNum: number;
-	qty: number;	
+	qty: number;
 }[];
 
 

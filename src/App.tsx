@@ -14,7 +14,7 @@ function App() {
 	return (
 		<>
 			<section className="listWrapper">
-				<MenuList />
+				<MenuList setCartContent={setCartContent} />
 			</section>
 
 			{cartContent[0].menuItemNum === 0 ? (
