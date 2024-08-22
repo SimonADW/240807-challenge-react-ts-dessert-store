@@ -2,14 +2,16 @@ import React, { useContext, useEffect, useState } from "react";
 import removeItemIcon from "../../assets/images/icon-remove-item.svg";
 import carbonNeutralImage from "../../assets/images/icon-carbon-neutral.svg";
 import styles from "./ShoppingCart.module.css";
-import { CartContentType, SetCartContentType } from "../../types";
+import { CartContentType, SetCartContentType, SetConfirmModalOpenType } from "../../types";
 import { MenuContext } from "../DessertProvider/DessertProvider";
 import { MenuItem } from "../MenuItem/MenuItem";
+
 
 const ShoppingCart: React.FC<{
 	cartContent: CartContentType;
 	setCartContent: SetCartContentType;
-}> = ({ cartContent, setCartContent }) => {
+	setConfirmModalOpen: SetConfirmModalOpenType;
+}> = ({ cartContent, setCartContent, setConfirmModalOpen }) => {
 	const [orderSumTotal, setOrderSumTotal] = useState<number>(0);
 
 	const context = useContext(MenuContext);
@@ -50,7 +52,7 @@ const ShoppingCart: React.FC<{
 							if (cartItem.menuItemNum === index) {
 								return (
 									<li
-										className={styles.cartIsstem}
+										className={styles.cartItem}
 										key={index}
 									>
 										<div
@@ -133,7 +135,7 @@ const ShoppingCart: React.FC<{
 						This is a <strong>carbon neutral</strong> delivery
 					</span>
 				</div>
-				<button className={styles.confirmOrderButton}>
+				<button onClick={()=>setConfirmModalOpen(true)} className={styles.confirmOrderButton}>
 					Confirm Order
 				</button>
 			</div>

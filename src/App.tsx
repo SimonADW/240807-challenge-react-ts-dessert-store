@@ -8,7 +8,7 @@ import { CartContentType } from "./types";
 
 function App() {
 	const [cartContent, setCartContent] = useState<CartContentType>([{menuItemNum: 2, qty: 2}, {menuItemNum: 3, qty: 2}]);
-	const [confirmOrderModalOpen, setConfirmModalOpen] = useState(true)
+	const [confirmOrderModalOpen, setConfirmModalOpen] = useState(false)
 
 
 	return (
@@ -20,7 +20,7 @@ function App() {
 			{cartContent[0].menuItemNum === 0 ? (
 			<ShoppingCartEmpty />
 			) : (
-			<ShoppingCart cartContent={cartContent} setCartContent={setCartContent}  />
+			<ShoppingCart cartContent={cartContent} setCartContent={setCartContent} setConfirmModalOpen={setConfirmModalOpen} />
 			)}
 
 			{confirmOrderModalOpen
