@@ -23,7 +23,7 @@ const ShoppingCart: React.FC<{
 	useEffect(() => {
 		const newOrderSumTotal = cartContent?.reduce((sum, cartItem) => {
 			const menuItem = menuArray.find(
-				(index) => Number(index) === cartItem.menuItemNum
+				(_,index) => Number(index) === cartItem.menuItemNum
 			);
 			return menuItem ? sum + cartItem.qty * menuItem.price : sum;
 		}, orderSumTotal);
@@ -124,7 +124,7 @@ const ShoppingCart: React.FC<{
 					<li className={styles.orderTotalLi}>
 						<span>Sum</span>
 						<span className={styles.orderTotalSum}>
-							{orderSumTotal}
+							{orderSumTotal.toFixed(2)}
 						</span>
 					</li>
 				</ul>
