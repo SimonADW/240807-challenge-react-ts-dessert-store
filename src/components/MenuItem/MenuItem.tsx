@@ -10,6 +10,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
 	index,
 	addToCartButtonActive,
 	setAddToCartButtonActive,
+	cartContent,
 	setCartContent
 }) => {
 	const [imageSrc, setImageSrc] = useState<string>("");
@@ -83,15 +84,21 @@ export const MenuItem: React.FC<MenuItemProps> = ({
 		});
 	}
 
+	const getCurrentItemsInCart = (index: number): number => {
+		const currentCartItem = cartContent.find((cartItem) => cartItem.menuItemNum === index)
+		return currentCartItem ? currentCartItem.qty : 0;  
+	}
+
 	return (
 		<div className={styles.menuItem}>
 			<img src={imageSrc} alt={item.name} />
 			{
-				// Render select amount buttons when add to cart clicked
-				addToCartButtonActive === index ? (
+				// Render select amount buttons when add to cart clicked, or if item is in cart
+				
+				getCurrentItemsInCart(index) || addToCartButtonActive === index ? (
 					<div className={styles.addToCartButtonActive}>
 						<button onClick={subtractItemFromCart} className={styles.addToCartDecrement}>-</button>
-						<span>1</span>
+						<span>{getCurrentItemsInCart(index)}</span>
 						<button onClick={addItemToCart} className={styles.addToCartIncrement}>+</button>
 					</div>
 				) : (

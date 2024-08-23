@@ -15,8 +15,9 @@ export type MenuItemType = {
 export type MenuItemProps = {
 	item: MenuItemType;
 	index: number;
-	addToCartButtonActive: number;
-	setAddToCartButtonActive: React.Dispatch<React.SetStateAction<number>>;
+	addToCartButtonActive: number | null;
+	setAddToCartButtonActive: React.Dispatch<React.SetStateAction<number | null>>;
+	cartContent: CartContentType;
 	setCartContent: SetCartContentType;
 };
 
