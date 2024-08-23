@@ -4,9 +4,8 @@ import carbonNeutralImage from "../../assets/images/icon-carbon-neutral.svg";
 import styles from "./ShoppingCart.module.css";
 import { CartContentType, SetCartContentType, SetConfirmModalOpenType } from "../../types";
 import { MenuContext } from "../DessertProvider/DessertProvider";
-import { MenuItem } from "../MenuItem/MenuItem";
 
-
+/** Shopping-cart component */
 const ShoppingCart: React.FC<{
 	cartContent: CartContentType;
 	setCartContent: SetCartContentType;
@@ -14,19 +13,21 @@ const ShoppingCart: React.FC<{
 }> = ({ cartContent, setCartContent, setConfirmModalOpen }) => {
 	const [orderSumTotal, setOrderSumTotal] = useState<number>(0);
 
+	/** Get menuArray from context */
 	const context = useContext(MenuContext);
 	if (!context) {
 		throw new Error("Cannot use MenuArray outside context");
 	}
 	const { menuArray } = context;
 
+	/** Calc ordersum */
 	useEffect(() => {
 		const newOrderSumTotal = cartContent?.reduce((sum, cartItem) => {
 			const menuItem = menuArray.find(
 				(_,index) => Number(index) === cartItem.menuItemNum
 			);
-			return menuItem ? sum + cartItem.qty * menuItem.price : sum;
-		}, orderSumTotal);
+			return menuItem ? sum += cartItem.qty * menuItem.price : sum;
+		}, 0);
 
 		setOrderSumTotal(newOrderSumTotal);
 	}, [cartContent, menuArray]);
@@ -42,7 +43,7 @@ const ShoppingCart: React.FC<{
 	return (
 		<>
 			<div className={styles.cart}>
-				<h1>Your Cart (0)</h1>
+				<h1>Your Cart ({cartContent.length})</h1>
 
 				<ul>
 					{/* Dynamically rendered: */}
