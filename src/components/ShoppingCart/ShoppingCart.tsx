@@ -20,6 +20,15 @@ const ShoppingCart: React.FC<{
 	}
 	const { menuArray } = context;
 
+	/** Calc total items in cart */
+	// TODO: 
+	const getTotalNumOfCartItems = ()=> {
+		return cartContent.reduce(
+			(acc, currentItem)=> {
+				return acc + (1 * currentItem.qty)							
+		}, 0)
+	}
+
 	/** Calc ordersum */
 	useEffect(() => {
 		const newOrderSumTotal = cartContent?.reduce((sum, cartItem) => {
@@ -43,7 +52,7 @@ const ShoppingCart: React.FC<{
 	return (
 		<>
 			<div className={styles.cart}>
-				<h1>Your Cart ({cartContent.length})</h1>
+				<h1>Your Cart ({getTotalNumOfCartItems()})</h1>
 
 				<ul>
 					{/* Dynamically rendered: */}

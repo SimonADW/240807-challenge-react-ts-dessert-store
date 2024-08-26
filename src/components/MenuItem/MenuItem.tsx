@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { MenuItemProps, CurrentDeviceType } from "../../types";
 import styles from "./MenuItem.module.css";
 
@@ -46,8 +46,9 @@ export const MenuItem: React.FC<MenuItemProps> = ({
 	useEffect(() => {
 		const importImage = async () => {
 			try {
-				import(`${item.image[currentDevice]}`).then((image) => {
+				import(/* @vite-ignore */ `${item.image[currentDevice]}`).then((image) => {
 					setImageSrc(image.default);
+					
 				});
 			} catch {
 				throw new Error("Unable to get image path");
@@ -88,12 +89,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
 	const getNumOfCurrentItemInCart = (index: number): number => {
 		const currentCartItem = cartContent.find((cartItem) => cartItem.menuItemNum === index)
 		return currentCartItem ? currentCartItem.qty : 0;  
-	}
-
-	// TODO: 
-	const getTotalNumOfCartItems = ()=> {
-		// something here
-	}
+	}	
 
 	return (
 		<div className={styles.menuItem}>
