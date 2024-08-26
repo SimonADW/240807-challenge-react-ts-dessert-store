@@ -45,6 +45,7 @@ const ConfirmOrderModal: React.FC<{
 										menuItem={menuItem}
 										index={index}
 										cartItem={cartItem}
+										key={index}
 									/>
 								);
 							}
