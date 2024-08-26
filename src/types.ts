@@ -28,6 +28,11 @@ export type CartContentType = {
 	qty: number;
 }[];
 
+export type CartItemType = {	
+	menuItemNum: number;
+	qty: number;
+};
+
 
 export type SetCartContentType = React.Dispatch<React.SetStateAction<CartContentType>>
 export type SetConfirmModalOpenType = React.Dispatch<React.SetStateAction<boolean>>

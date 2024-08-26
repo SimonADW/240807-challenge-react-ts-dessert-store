@@ -21,7 +21,6 @@ const ShoppingCart: React.FC<{
 	const { menuArray } = context;
 
 	/** Calc total items in cart */
-	// TODO: 
 	const getTotalNumOfCartItems = ()=> {
 		return cartContent.reduce(
 			(acc, currentItem)=> {

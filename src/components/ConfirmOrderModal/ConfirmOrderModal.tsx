@@ -1,38 +1,58 @@
 import checkIcon from "../../assets/images/icon-order-confirmed.svg";
 import styles from "./ConfirmOrderModal.module.css";
-import { SetCartContentType, SetConfirmModalOpenType } from "../../types";
+import {
+	CartContentType,
+	MenuItemType,
+	SetCartContentType,
+	SetConfirmModalOpenType,
+} from "../../types";
+import { useContext } from "react";
+import ConfirmOrderItem from "../ConfirmOrderItem/ConfirmOrderItem";
+import { MenuContext } from "../DessertProvider/DessertProvider";
 
 const ConfirmOrderModal: React.FC<{
 	setCartContent: SetCartContentType;
 	setConfirmModalOpen: SetConfirmModalOpenType;
-}> = ({ setCartContent, setConfirmModalOpen }) => {
+	cartContent: CartContentType;
+}> = ({ setCartContent, setConfirmModalOpen, cartContent }) => {
 	const handleStartNewOrder = () => {
-		setCartContent([{ menuItemNum: 0, qty: 0 }]);
+		setCartContent([]);
 		setConfirmModalOpen(false);
 	};
 
+	/** Get menuArray from context */
+	const context = useContext(MenuContext);
+	if (!context) {
+		throw new Error("Cannot use menuarray outside context");
+	}
+	const { menuArray } = context;
+
 	return (
-		<div className={styles.confirmOrderModal}>
-			<img src={checkIcon} alt="check" />
-			<div>
-				<h1>Order Confirmed</h1>
-				<p>We hope you enjoy your food</p>
+		<div className={styles.confirmOrderModalBackdrop}>
+			<div className={styles.confirmOrderModal}>
+				<img src={checkIcon} alt="check" />
+				<div>
+					<h1>Order Confirmed</h1>
+					<p>We hope you enjoy your food</p>
+				</div>
+				<ul>
+					{/* Dymically rendered cart items */}
+					{menuArray.map((menuItem: MenuItemType, index: number) => {
+						for (const cartItem of cartContent) {
+							if (cartItem.menuItemNum === index) {
+								return (
+									<ConfirmOrderItem
+										menuItem={menuItem}
+										index={index}
+										cartItem={cartItem}
+									/>
+								);
+							}
+						}
+					})}
+				</ul>
+				<button onClick={handleStartNewOrder}>Start New Order</button>
 			</div>
-			<ul>
-				{/* Dymically rendered list items */}
-				<li className={styles.summaryItemLi}>
-					<img alt="thumbnail" />
-					<div className={styles.listItem__namePriceWrapper}>
-						<span>Classic Tiramusy</span>
-						<div>
-							<span className={styles.itemQty}>1</span>
-							<span className={styles.itemPrice}>5.50</span>
-						</div>
-					</div>
-					<div className={styles.itemTotal}>5.50</div>
-				</li>
-			</ul>
-			<button onClick={handleStartNewOrder}>Start New Order</button>
 		</div>
 	);
 };

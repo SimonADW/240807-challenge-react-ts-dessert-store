@@ -4,6 +4,7 @@
 	font-family: "Hat Red Text", sans-serif;
 	font-size: 16px;
 	padding: 2rem 2rem;
+	position: relative;
 	background: var(--color-Rose-100);
 }
 

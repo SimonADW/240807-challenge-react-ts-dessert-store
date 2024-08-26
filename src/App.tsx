@@ -25,7 +25,7 @@ function App() {
 
 			{confirmOrderModalOpen
 			&&
-			<ConfirmOrderModal setCartContent={setCartContent} setConfirmModalOpen={setConfirmModalOpen}/>			
+			<ConfirmOrderModal setCartContent={setCartContent} setConfirmModalOpen={setConfirmModalOpen} cartContent={cartContent}/>			
 			}
 			
 		</>

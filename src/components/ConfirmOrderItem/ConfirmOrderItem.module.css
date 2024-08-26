@@ -1,0 +1,43 @@
+
+/* List-items */
+.summaryItemLi {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.summaryItemLi img {
+	width: 3rem;
+}
+
+.listItem__namePriceWrapper div {	
+	width: 100%;
+	display: flex;
+	gap: 1rem;
+}
+
+.itemQty {
+	font-weight: 600;
+	color: var(--color-Red);
+}
+
+.itemPrice {
+	color: var(--color-Rose-500);
+}
+
+.itemQty::after {
+	content: "x";
+}
+
+.itemPrice::before {
+content: "$";
+}
+
+.itemTotal {
+	font-weight: 600;
+	margin-left: auto;
+}
+
+.itemTotal::before {
+	content: "$";
+}
