@@ -1,20 +1,10 @@
-import { createContext, ReactNode, useState } from 'react'
+import { createContext, useState } from 'react'
 import menuData from "../../assets/data.json"
-import { MenuItemType } from '../../types'
-
-/** Context-provider of menuData for whole app */
-
-type MenuContextType = {
-	menuArray: MenuItemType[];
-	setMenuArray: React.Dispatch<React.SetStateAction<MenuItemType[]>>;
-}
+import { MenuItemType, DessertProviderProps, MenuContextType } from '../../types'
 
 export const MenuContext = createContext<MenuContextType | undefined>(undefined)
 
-type DessertProviderProps = {
-	children: ReactNode
-}
-
+/** Context-provider of menuData for whole app */
 const DessertProvider: React.FC<DessertProviderProps> = ({ children }) => {
 	const [menuArray, setMenuArray] = useState<MenuItemType[]>(menuData)	
 	

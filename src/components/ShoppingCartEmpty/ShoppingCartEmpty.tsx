@@ -1,7 +1,7 @@
-import React from 'react'
 import cakeIllustration from '../../assets/images/illustration-empty-cart.svg'
 import styles from './ShoppingCartEmpty.module.css';
 
+/** Placeholder-component for empty shopping cart */
 const ShoppingCartEmpty = () => {
   return (
 	<div className={styles.cartEmpty}>

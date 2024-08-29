@@ -5,7 +5,6 @@ import styles from '../MenuList/MenuList.module.css';
 import { CartContentType, SetCartContentType } from '../../types';
 
 /** Renders list of MenuItems */
-
 const MenuList: React.FC<{setCartContent: SetCartContentType, cartContent: CartContentType}> = ({setCartContent, cartContent}) => {
 	const [addToCartButtonActive, setAddToCartButtonActive] = useState<number | null>(null)
 	const context = useContext(MenuContext);	

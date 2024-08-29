@@ -4,7 +4,6 @@ import styles from "./MenuItem.module.css";
 
 
 /** Single Item in menu, props from map`ed array in MenuList */
-
 export const MenuItem: React.FC<MenuItemProps> = ({
 	item,
 	index,

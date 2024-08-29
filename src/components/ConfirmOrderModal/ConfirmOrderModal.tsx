@@ -10,6 +10,7 @@ import { useContext } from "react";
 import ConfirmOrderItem from "../ConfirmOrderItem/ConfirmOrderItem";
 import { MenuContext } from "../DessertProvider/DessertProvider";
 
+/** Component to display order-confirmation with items */
 const ConfirmOrderModal: React.FC<{
 	setCartContent: SetCartContentType;
 	setConfirmModalOpen: SetConfirmModalOpenType;

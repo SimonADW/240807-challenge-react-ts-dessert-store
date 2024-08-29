@@ -1,4 +1,13 @@
-import React from "react";
+import React, {ReactNode} from "react";
+
+export type MenuContextType = {
+	menuArray: MenuItemType[];
+	setMenuArray: React.Dispatch<React.SetStateAction<MenuItemType[]>>;
+}
+
+export type DessertProviderProps = {
+	children: ReactNode
+}
 
 export type MenuItemType = {
 	image: {
@@ -32,7 +41,6 @@ export type CartItemType = {
 	menuItemNum: number;
 	qty: number;
 };
-
 
 export type SetCartContentType = React.Dispatch<React.SetStateAction<CartContentType>>
 export type SetConfirmModalOpenType = React.Dispatch<React.SetStateAction<boolean>>
