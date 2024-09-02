@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { CartItemType, MenuItemType } from "../../types";
+import { CartItemType, ImageModule, MenuItemType } from "../../types";
 import styles from "./ConfirmOrderItem.module.css";
 
 /** Item in confirm order modal */
@@ -10,22 +10,42 @@ const ConfirmOrderItem: React.FC<{
 	cartItem: CartItemType;
 }> = ({ menuItem, index, cartItem }) => {
 	const [thumbImageSrc, setThumbImageSrc] = useState<string>("");
+
+
+	/** Get function that imports correct image */
+	const getImages = () => {
+		return import.meta.glob("../../assets/images/*.jpg") as Record<
+			string,
+			() => Promise<ImageModule>
+		>;
+	};
+	
 	/**  Import thumbnail image  */
 	useEffect(() => {
 		const importImage = async () => {
 			try {
-				import(/* @vite-ignore */ `${menuItem.image.thumbnail}`).then(
-					(image) => {
-						setThumbImageSrc(image.default);
-					}
-				);
-			} catch {
-				throw new Error("Unable to get image path");
+				const imagePath = menuItem.image["thumbnail"];
+
+				const images = getImages()
+
+				const importer = images[imagePath]
+				if(importer) {
+					const image = await importer();
+					setThumbImageSrc(image.default);
+				} else {
+					throw new Error("Unable to fetch thumbnail-image");
+				}
+			} catch(error) {
+				if(error instanceof Error) {
+					console.error("Unable to get image path", error.message);
+				} else {
+					console.error("Unexpected error", error);
+				}
 			}
 		};
 
 		importImage();
-	}, [menuItem.image.thumbnail]);
+	}, [menuItem.image]);
 
 	return (
 		<li key={index} className={styles.summaryItemLi}>

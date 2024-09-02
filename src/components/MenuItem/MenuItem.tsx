@@ -40,7 +40,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
 		};
 	}, []);
 
-	/** Get images with the correct type */
+	/** Get function that imports correct image */
 	const getImages = () => {
 		return import.meta.glob("../../assets/images/*.jpg") as Record<
 			string,
