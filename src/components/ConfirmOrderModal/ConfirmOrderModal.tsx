@@ -3,6 +3,7 @@ import styles from "./ConfirmOrderModal.module.css";
 import {
 	CartContentType,
 	MenuItemType,
+	setAddToCartButtonActiveType,
 	SetCartContentType,
 	SetConfirmModalOpenType,
 } from "../../types";
@@ -15,10 +16,13 @@ const ConfirmOrderModal: React.FC<{
 	setCartContent: SetCartContentType;
 	setConfirmModalOpen: SetConfirmModalOpenType;
 	cartContent: CartContentType;
-}> = ({ setCartContent, setConfirmModalOpen, cartContent }) => {
-	const handleStartNewOrder = () => {
+	setAddToCartButtonActive: setAddToCartButtonActiveType;
+	
+}> = ({ setCartContent, setConfirmModalOpen, cartContent, setAddToCartButtonActive }) => {
+	const handleStartNewOrder = () => {		
 		setCartContent([]);
 		setConfirmModalOpen(false);
+		setAddToCartButtonActive(null)
 	};
 
 	/** Get menuArray from context */

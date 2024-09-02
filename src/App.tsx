@@ -9,12 +9,13 @@ import { CartContentType } from "./types";
 function App() {
 	const [cartContent, setCartContent] = useState<CartContentType>([]);
 	const [confirmOrderModalOpen, setConfirmModalOpen] = useState(false)
+	const [addToCartButtonActive, setAddToCartButtonActive] = useState<number | null>(null)
 
 
 	return (
 		<>
 			<section className="listWrapper">
-				<MenuList setCartContent={setCartContent} cartContent={cartContent} />
+				<MenuList setCartContent={setCartContent} cartContent={cartContent} addToCartButtonActive={addToCartButtonActive} setAddToCartButtonActive={setAddToCartButtonActive} />
 			</section>
 
 			{cartContent.length ? (
@@ -25,7 +26,7 @@ function App() {
 
 			{confirmOrderModalOpen
 			&&
-			<ConfirmOrderModal setCartContent={setCartContent} setConfirmModalOpen={setConfirmModalOpen} cartContent={cartContent}/>			
+			<ConfirmOrderModal setCartContent={setCartContent} setConfirmModalOpen={setConfirmModalOpen} cartContent={cartContent} setAddToCartButtonActive={setAddToCartButtonActive}/>			
 			}
 			
 		</>

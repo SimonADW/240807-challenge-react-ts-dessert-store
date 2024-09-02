@@ -24,10 +24,10 @@ export type MenuItemType = {
 export type MenuItemProps = {
 	item: MenuItemType;
 	index: number;
-	addToCartButtonActive: number | null;
-	setAddToCartButtonActive: React.Dispatch<React.SetStateAction<number | null>>;
+	addToCartButtonActive:addToCartButtonActiveType;
+	setAddToCartButtonActive: setAddToCartButtonActiveType;
 	cartContent: CartContentType;
-	setCartContent: SetCartContentType;
+	setCartContent: SetCartContentType;	
 };
 
 export type CurrentDeviceType =	'thumbnail' | 'mobile' | 'tablet' | 'desktop';
@@ -48,5 +48,8 @@ export type CartItemType = {
 
 export type SetCartContentType = React.Dispatch<React.SetStateAction<CartContentType>>
 export type SetConfirmModalOpenType = React.Dispatch<React.SetStateAction<boolean>>
+
+export type addToCartButtonActiveType = number | null
+export type setAddToCartButtonActiveType = React.Dispatch<React.SetStateAction<number | null>>
 
 
