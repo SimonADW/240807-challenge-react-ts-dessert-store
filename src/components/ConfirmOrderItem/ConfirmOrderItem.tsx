@@ -3,13 +3,14 @@ import React, { useEffect, useState } from "react";
 import { CartItemType, MenuItemType } from "../../types";
 import styles from "./ConfirmOrderItem.module.css";
 
+/** Item in confirm order modal */
 const ConfirmOrderItem: React.FC<{
 	menuItem: MenuItemType;
 	index: number;
 	cartItem: CartItemType;
 }> = ({ menuItem, index, cartItem }) => {
 	const [thumbImageSrc, setThumbImageSrc] = useState<string>("");
-	/**  Import image based on device */
+	/**  Import thumbnail image  */
 	useEffect(() => {
 		const importImage = async () => {
 			try {

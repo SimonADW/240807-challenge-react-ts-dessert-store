@@ -32,6 +32,10 @@ export type MenuItemProps = {
 
 export type CurrentDeviceType =	'thumbnail' | 'mobile' | 'tablet' | 'desktop';
 
+export type ImageModule = {
+	default: string; // URL of the image
+};
+
 export type CartContentType = {	
 	menuItemNum: number;
 	qty: number;
@@ -44,3 +48,5 @@ export type CartItemType = {
 
 export type SetCartContentType = React.Dispatch<React.SetStateAction<CartContentType>>
 export type SetConfirmModalOpenType = React.Dispatch<React.SetStateAction<boolean>>
+
+
